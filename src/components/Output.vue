@@ -17,11 +17,12 @@ export default {
     div{
         margin-left: 5px;
         width: 40%;
-        height: 400px;
+        height: 438px;
         display: inline-block;
         background: #232323;
         text-align: left;
         padding: 0;
+        border: 2px solid #111;
     }
 
     p{

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <input v-model="regex" v-on:keyup="process" placeholder="RegExp">
         <textarea v-model="input" v-on:keyup="process" placeholder="Your text"></textarea> 
+        <input v-model="regex" v-on:keyup="process" placeholder="RegExp">
     </div>
 </template>
 
@@ -44,15 +44,17 @@ export default {
         color: #fefefe;
         width: 100%;
         height: 100%;
-        border: none;
+        border: 2px solid #111;
+    }
+
+    textarea:focus{
+        border: 2px solid #d1b70a;
     }
 
     input {
-        width: 78.5%;
-        position: absolute;
-        top: 65%;
+        width: 95%;
         outline: none;
-        border: none;
+        border: 2px solid #111;
         background-color: #232323;
         color: #fefefe;
         padding-top: 20px;

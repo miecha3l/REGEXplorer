@@ -3,24 +3,27 @@
     <h1>REGEXplorer</h1>
     <RegexInput v-bind:update="updateResult" v-bind:eval="evaluateExpression"/>
     <Output v-bind:data="result"/>
+    <Console v-bind:errMsg="error"/>
   </div>
 </template>
 
 <script>
 import RegexInput from './components/RegexInput'
 import Output from './components/Output'
-
+import Console from './components/Console'
 
 export default {
   name: 'App',
   components: {
     RegexInput,
-    Output
+    Output,
+    Console
   },
   data() {
     return {
       result: "",
       regex: "",
+      error: "",
     }
   },
   methods: {
@@ -30,8 +33,19 @@ export default {
     },
 
     'evaluateExpression': function() {
-      if(this.regex.length > 0)
-        this.result = this.result.replace(new RegExp(this.regex, 'gi'), str => `<span style="color: #d1b70a;">${str}</span>`)
+      if(this.regex.length > 0){
+        try{
+          this.result = this.result.replace(new RegExp(this.regex, 'gi'), str => `<span style="color: #d1b70a;">${str}</span>`);
+          this.error = "";
+        }
+        catch(exception) {
+          this.error = exception.message;
+        }
+      }
+      else{
+        this.error = "";
+      }
+        
     }
   }
 }
@@ -44,12 +58,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fefefe;
-  margin-top: 0 auto;
-  
+  margin-top: 0 auto;    
 }
 
 body{
   background-color: #273a47;
+  padding: 10px;
+  padding-bottom: 0;
 }
 
 input{
@@ -57,4 +72,9 @@ input{
   margin: 0 auto;
   width: 80%;
 }
+
+h1{
+  margin: 20px;
+}
+
 </style>
