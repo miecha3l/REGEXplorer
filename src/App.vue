@@ -1,17 +1,38 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>REGEXplorer</h1>
+    <RegexInput v-bind:update="updateResult" v-bind:eval="evaluateExpression"/>
+    <Output v-bind:data="result"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import RegexInput from './components/RegexInput'
+import Output from './components/Output'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    RegexInput,
+    Output
+  },
+  data() {
+    return {
+      result: "",
+      regex: "",
+    }
+  },
+  methods: {
+    'updateResult': function(input, regex) {
+      this.result = input;
+      this.regex = regex;
+    },
+
+    'evaluateExpression': function() {
+      if(this.regex.length > 0)
+        this.result = this.result.replace(new RegExp(this.regex, 'gi'), str => `<span style="color: #d1b70a;">${str}</span>`)
+    }
   }
 }
 </script>
@@ -22,7 +43,18 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #fefefe;
+  margin-top: 0 auto;
+  
+}
+
+body{
+  background-color: #273a47;
+}
+
+input{
+  display: block;
+  margin: 0 auto;
+  width: 80%;
 }
 </style>
