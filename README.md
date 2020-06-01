@@ -1,24 +1,12 @@
-# regex-explorer
+# REGEXplorer
+This is simple web aplication made to fiddle with regex in real time.  
+Check it out: regexplorer.netlify.app
 
-## Project setup
-```
-npm install
-```
+# Frameworks
+* vue.js
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+# Project scripts
+* `npm run build` to get production build
+* `npm run serve` to start development server  
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Have fun!
